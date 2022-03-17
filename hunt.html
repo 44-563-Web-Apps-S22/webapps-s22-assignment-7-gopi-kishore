@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUNT</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .flex-container>div {
+            /*div children of the flex container*/
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bird hunt Gopi kishore sukasi</h1>
+    <div class="container-fluid">
+        <div class="d-inline p-2 bg-info "> Click on the squares to search for bird.</div>
+        <div class="d-inline p-2 bg-warning " id="shakes" style="color:blue"> Number of shakes is zero.</div>
+        <div class="d-inline p-2 bg-dark text-white" id="score" style="color:red"> Location score is unknown.</div>
+    </div>
+
+    <div class="flex-container" id="target">
+
+        <div class="row">
+            <div class="col-sm-2 padding"><img id="img0" onclick="check(0)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img1" onclick="check(1)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img2" onclick="check(2)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img3" onclick="check(3)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img4" onclick="check(4)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-2 padding"><img id="img5" onclick="check(5)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img6" onclick="check(6)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img7" onclick="check(7)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img8" onclick="check(8)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img9" onclick="check(9)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-2 padding"><img id="img10" onclick="check(10)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img11" onclick="check(11)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img12" onclick="check(12)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img13" onclick="check(13)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img14" onclick="check(14)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-2 padding"><img id="img15" onclick="check(15)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img16" onclick="check(16)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img17" onclick="check(17)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img18" onclick="check(18)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img19" onclick="check(19)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-2 padding"><img id="img20" onclick="check(20)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img21" onclick="check(21)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img22" onclick="check(22)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img23" onclick="check(23)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+            <div class="col-sm-2 padding"><img id="img24" onclick="check(24)" src="plant.jpg" width="200" height="180"
+                    alt="TREE" /></div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        var ids = ["img0", "img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10", "img11", "img12", "img13", "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23", "img24"]
+        var shakeCount = 0;
+        var birdlLocation = Math.floor(Math.random() * 25);
+
+        function check(position) {
+            id = ids[position]
+            img_pos = document.getElementById(id)
+            if (position == birdlLocation)
+                img_pos.src = "SPARROW.jpg"
+            else
+                img_pos.src = "nest.jpg"
+
+            shakeCount = shakeCount + 1;
+            document.getElementById("shakes").innerHTML = "Number of shakes is " + shakeCount;
+            document.getElementById("score").innerHTML = "The score is " + locationScore(position, birdlLocation);
+        }
+        function reset() {
+            shakeCount = 0;
+            document.getElementById("shakes").innerHTML = "Number of shakes is " + shakeCount;
+            birdLocation = Math.floor(Math.random() * 25);
+        }
+
+        function locationScore(pos1, pos2) {
+            var row1, row2, col1, col2
+            var data = [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15, 16, 17, 18, 19], [20, 21, 22, 23, 24]]
+            for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < data[i].length; j++) {
+                    if (pos1 == data[i][j]) {
+                        row1 = i
+                        col1 = j
+                    }
+                }
+            }
+            for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < data[i].length; j++) {
+                    if (pos2 == data[i][j]) {
+                        row2 = i
+                        col2 = j
+                    }
+                }
+            }
+
+            if (row1 == row2)
+                return 1
+            else if (col1 == col2)
+                return 1
+            else if (Math.abs(pos1 - pos2) == 4 || Math.abs(pos1 - pos2) == 6)
+                return 1
+            else
+                return 0
+
+        }
+    </script>
+</body>
+
+</html>
